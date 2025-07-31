@@ -1,0 +1,24 @@
+
+module cart_top_logo1(cart_width, cart_length) {
+    translate([cart_length*2/3-5,cart_width/2,0])
+    rotate([0,0,90])
+    scale([1,-1,1])
+    resize([cart_width*0.9,0,1], auto=true)
+        color("red")
+        import("cart_top_logo_netfabb.stl");
+}
+
+module cart_top_logo(cart_width, cart_length) {
+    translate([cart_length*2/3-10,cart_width/2,0])
+    rotate([0,0,90])
+    scale([1,-1,1])
+    resize([cart_width*0.9,0,0.4], auto=true)
+    linear_extrude(1)
+    import(file="8bitlogo_bw_reduced.svg", center = true);
+}
+
+
+if(is_undef(CONFIG)) {
+    include <config.scad>
+    cart_top_logo(cart_width,cart_length);
+}
