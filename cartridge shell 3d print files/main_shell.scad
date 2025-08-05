@@ -6,8 +6,6 @@ include <ridges.scad>
 include <pcb_support.scad>
 
 module main_shell(cart_length, cart_width, cart_height, cart_shell_thickness, rim_height, ridge_width) {
-    rim_height = 1;
-
     shell_height = cart_height - (rim_height > 0 ? rim_height : 0);
     
     difference() {
@@ -29,14 +27,14 @@ module main_shell(cart_length, cart_width, cart_height, cart_shell_thickness, ri
                 shell_height-cart_shell_thickness+10
             ]);
     }    
+    echo("main_shell::ridge_width",ridge_width);
     ridges(cart_length, cart_width, shell_height, ridge_width);
     pcb_support(cart_width, shell_height + rim_height, cart_shell_thickness, rim_height>0);
 }
 
+//if(is_undef(CONFIG)) {
 if(false) {
     include <config.scad>
-    
     main_shell(cart_length, cart_width, cart_height_top , cart_shell_thickness, -rim_height, ridge_width);
-
     translate([0,-70,0]) main_shell(cart_length, cart_width, cart_height_bottom, cart_shell_thickness, rim_height, ridge_width);
 }

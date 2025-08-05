@@ -2,16 +2,16 @@
    (c) R.Edwards 2023
 */
 
-include <config.scad>
 include <main_shell.scad>
 include <screw_tower.scad>
 include <cart_top_logo.scad>;
 
-module cart_top(cart_length, cart_width, cart_height) {
+module cart_top(cart_length, cart_width, cart_height, cart_shell_thickness, screw_tower_offset, screw_sep, ridge_width, rim_height)
+{
     difference() {
         union() {
-            main_shell(cart_length, cart_width, cart_height, cart_shell_thickness, -rim_height, ridge_width);
-
+            main_shell(cart_length, cart_width, cart_height, cart_shell_thickness, -rim_height, ridge_width);            
+            
             translate([screw_tower_offset, (cart_width-screw_sep)/2, 0])
                 screw_tower_top(cart_height);
             translate([screw_tower_offset, cart_width-(cart_width-screw_sep)/2, 0])
@@ -32,7 +32,7 @@ module cart_top(cart_length, cart_width, cart_height) {
     }
 }
 
-difference() {
-    cart_top(cart_length, cart_width, cart_height_top);
-    cart_top_logo(cart_width,cart_length);
+if(is_undef(CONFIG)) {
+    include <config.scad>
+    cart_top(cart_length, cart_width, cart_height_top, cart_shell_thickness, screw_tower_offset, screw_sep, ridge_width, rim_height);
 }

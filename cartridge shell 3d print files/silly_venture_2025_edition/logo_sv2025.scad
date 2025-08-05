@@ -1,4 +1,4 @@
-module cart_top_logo(cart_width, cart_length) {
+module logo_sv2025(cart_width, cart_length) {
     translate([cart_length*2/3-10,cart_width/2,0])
     rotate([0,0,90])
     scale([1,-1,1])
@@ -10,5 +10,5 @@ module cart_top_logo(cart_width, cart_length) {
 
 if(is_undef(CONFIG)) {
     include <../config.scad>
-    cart_top_logo(cart_width,cart_length);
+    logo_sv2025(cart_width,cart_length);
 }

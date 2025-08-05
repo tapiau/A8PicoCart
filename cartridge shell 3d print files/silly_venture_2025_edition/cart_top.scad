@@ -5,7 +5,7 @@
 include <../config.scad>
 include <../main_shell.scad>
 include <../screw_tower.scad>
-include <cart_top_logo.scad>;
+include <logo_sv2025.scad>;
 
 module cart_top(cart_length, cart_width, cart_height) {
     difference() {
@@ -34,5 +34,5 @@ module cart_top(cart_length, cart_width, cart_height) {
 
 difference() {
     cart_top(cart_length, cart_width, cart_height_top);
-    cart_top_logo(cart_width,cart_length);
+    logo_sv2025(cart_width,cart_length);
 }

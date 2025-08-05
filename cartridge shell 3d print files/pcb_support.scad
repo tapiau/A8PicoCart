@@ -6,6 +6,10 @@ pcb_support_width=55;
 pcb_support_cutout=1;
 
 module pcb_support(cart_width, cart_height, cart_shell_thickness, usb_slot=false) {
+
+    echo("pcb_support::cart_height", cart_height);
+    echo("pcb_support::cart_shell_thickness", cart_shell_thickness);
+
     usb_slot_widht=17;
     support_offset_1=17;
     support_offset_2=58;
@@ -33,10 +37,11 @@ module pcb_support(cart_width, cart_height, cart_shell_thickness, usb_slot=false
     }
 }
 
-
-if(is_undef(CONFIG)) {
+//if(is_undef(CONFIG)) {
+if(false) {
     include <config.scad>
     pcb_support(cart_width, cart_height_top, cart_shell_thickness, true);
     translate([cart_width, 0, 0])
         pcb_support(cart_width, cart_height_top, cart_shell_thickness, false);
 }
+

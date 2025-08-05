@@ -4,7 +4,6 @@
 
 CONFIG=true;
 
-
 screw_sep = 44;
 support_height = 7.6;
 logo_width = 14.5;

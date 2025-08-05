@@ -1,14 +1,13 @@
 include <main_shell.scad>;
-include <pcb_support.scad>;
 include <screw_tower.scad>;
 
 $fn=40;
 
-module cart_bottom(cart_length, cart_width, cart_height, screw_tower_offset, screw_sep, rim_height) {
+module cart_bottom(cart_length, cart_width, cart_height, cart_shell_thickness, screw_tower_offset, screw_sep, ridge_width, rim_height) {
     difference() {
         union() {
             // main shell
-            main_shell(cart_length, cart_width, cart_height_bottom, cart_shell_thickness, rim_height, ridge_width);
+            main_shell(cart_length, cart_width, cart_height, cart_shell_thickness, rim_height, ridge_width);            
             // screw holes
             translate([31, (cart_width-screw_sep)/2, 0])
                 screw_tower_bottom(cart_height-rim_height);
@@ -25,6 +24,5 @@ module cart_bottom(cart_length, cart_width, cart_height, screw_tower_offset, scr
 
 if(is_undef(CONFIG)) {
     include <config.scad>
-    cart_bottom(cart_length, cart_width, cart_height_bottom,screw_tower_offset, screw_sep, rim_height);
+    cart_bottom(cart_length, cart_width, cart_height_bottom, cart_shell_thickness, screw_tower_offset, screw_sep, ridge_width, rim_height);
 }
-
